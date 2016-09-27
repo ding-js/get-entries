@@ -1,0 +1,16 @@
+{
+  "name": "get-entries",
+  "version": "1.0.0",
+  "description": "Get webpack type entries. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "d",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/glob": "^5.0.30",
+    "glob": "^7.1.0",
+    "typescript": "^2.0.3"
+  }
+}
