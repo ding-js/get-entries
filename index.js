@@ -17,20 +17,3 @@ var getEntries = function (options) {
     console.log(entries);
     return entries;
 };
-/*getEntries({
-    origin: "./test/src",
-    target: "./test/dist",
-    ext: [{
-        origin: ".ts",
-        target: ".js"
-    },
-    {
-        origin: ".js",
-        target: ".js"
-    },
-    {
-        origin: ".css",
-        target: ".css"
-    }],
-    glob: {}
-});*/ 
