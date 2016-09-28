@@ -16,7 +16,7 @@ interface options {
 const getEntries = (options: options) => {
     const entries = {};
     for (let ext of options.ext) {
-        sync(join(__dirname, options.origin, `**/*${ext.origin}`), options.glob)
+        sync(join(options.origin, `**/*${ext.origin}`), options.glob)
             .forEach(v => {
                 const filePath = resolve(v),
                     diffPath = relative(options.origin, filePath),
@@ -26,6 +26,8 @@ const getEntries = (options: options) => {
                 entries[pathName] = filePath;
             });
     }
-    console.log(entries);
     return entries;
 };
+
+
+module.exports = getEntries;
