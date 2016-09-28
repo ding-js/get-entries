@@ -22,7 +22,8 @@ const getEntries = (options: options) => {
                     diffPath = relative(options.origin, filePath),
                     originBasename = basename(filePath, ext.origin),
                     currentDirname = dirname(diffPath),
-                    pathName = resolve(options.target, currentDirname, originBasename + ext.target);
+                    fileName = originBasename + ext.target,
+                    pathName = resolve(options.target, currentDirname, fileName);
                 entries[pathName] = filePath;
             });
     }

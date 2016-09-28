@@ -6,7 +6,7 @@ var getEntries = function (options) {
     var _loop_1 = function(ext) {
         glob_1.sync(path_1.join(options.origin, "**/*" + ext.origin), options.glob)
             .forEach(function (v) {
-            var filePath = path_1.resolve(v), diffPath = path_1.relative(options.origin, filePath), originBasename = path_1.basename(filePath, ext.origin), currentDirname = path_1.dirname(diffPath), pathName = path_1.resolve(options.target, currentDirname, originBasename + ext.target);
+            var filePath = path_1.resolve(v), diffPath = path_1.relative(options.origin, filePath), originBasename = path_1.basename(filePath, ext.origin), currentDirname = path_1.dirname(diffPath), fileName = originBasename + ext.target, pathName = path_1.resolve(options.target, currentDirname, fileName);
             entries[pathName] = filePath;
         });
     };
