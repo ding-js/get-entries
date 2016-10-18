@@ -6,8 +6,8 @@ var getEntries = function (options) {
     var _loop_1 = function(ext) {
         glob_1.sync(options.origin + "/**/*" + ext.origin, options.glob)
             .forEach(function (v) {
-            var fileBaseName = path_1.basename(v, ext.origin), targetName = v.replace(options.target, options.origin)
-                .replace(fileBaseName + ext.target, fileBaseName + ext.origin);
+            var fileBaseName = path_1.basename(v, ext.origin), targetName = v.replace(options.origin, options.target)
+                .replace(fileBaseName + ext.origin, fileBaseName + ext.target);
             entries[targetName] = options.publicModule ? [v].concat(options.publicModule) : [v];
         });
     };

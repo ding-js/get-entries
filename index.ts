@@ -20,8 +20,8 @@ const getEntries = (options: options) => {
         sync(`${options.origin}/**/*${ext.origin}`, options.glob)
             .forEach(v => {
                 const fileBaseName = basename(v, ext.origin),
-                    targetName = v.replace(options.target, options.origin)
-                        .replace(fileBaseName + ext.target, fileBaseName + ext.origin);
+                    targetName = v.replace(options.origin, options.target)
+                        .replace(fileBaseName + ext.origin, fileBaseName + ext.target);
                 entries[targetName] = options.publicModule ? [v].concat(options.publicModule) : [v];
             });
     }
