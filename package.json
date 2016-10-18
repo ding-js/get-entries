@@ -11,10 +11,10 @@
   "author": "dingjs",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^2.0.3"
+    "typescript": "^2.0.3",
+    "@types/glob": "^5.0.30"
   },
   "dependencies": {
-    "@types/glob": "^5.0.30",
     "glob": "^7.1.1"
   }
 }
