@@ -1,5 +1,5 @@
 # Get-entries
-Get entries for multiple pages;
+Get entries for multiple pages
 
 
 ## Usage
