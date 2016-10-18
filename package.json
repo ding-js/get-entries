@@ -1,6 +1,6 @@
 {
   "name": "get-entries",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Get webpack entries.",
   "main": "index.js",
   "scripts": {
