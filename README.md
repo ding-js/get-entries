@@ -21,7 +21,7 @@ Project
 
 ```javascript
 //webpack.config.js
-const webpack=require("webpack);
+const webpack=require("webpack");
 const getEntries=require("get-entries");
 const entries=getEntries({
     origin:"src/",
