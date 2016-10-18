@@ -1,10 +1,12 @@
 # Get-entries
-Get entries for multiple pages
+Get entries for application with multiple page
 
 
 ## Usage
 
+
 getEntries(options)
+
 
 Project
 ```
