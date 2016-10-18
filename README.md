@@ -36,7 +36,7 @@ const entries=getEntries({
 });
 
 module.exports={
-    entries=entries
+    entries:entries
     //...
 }
 ```
