@@ -9,26 +9,23 @@ interface ext {
 interface options {
     origin: string;
     target: string;
-    ext: ext[];
-    glob: any;
+    exts: ext[];
+    publicModule?: string[];
+    glob?: any;
 }
 
 const getEntries = (options: options) => {
     const entries = {};
-    for (let ext of options.ext) {
-        sync(join(options.origin, `**/*${ext.origin}`), options.glob)
+    for (let ext of options.exts) {
+        sync(`${options.origin}/**/*${ext.origin}`, options.glob)
             .forEach(v => {
-                const filePath = resolve(v),
-                    diffPath = relative(options.origin, filePath),
-                    originBasename = basename(filePath, ext.origin),
-                    currentDirname = dirname(diffPath),
-                    fileName = originBasename + ext.target,
-                    pathName = resolve(options.target, currentDirname, fileName);
-                entries[pathName] = filePath;
+                const fileBaseName = basename(v, ext.origin),
+                    targetName = v.replace(options.target, options.origin)
+                        .replace(fileBaseName + ext.target, fileBaseName + ext.origin);
+                entries[targetName] = options.publicModule ? [v].concat(options.publicModule) : [v];
             });
     }
     return entries;
 };
 
-
-module.exports = getEntries;
+export = getEntries;

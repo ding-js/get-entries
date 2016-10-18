@@ -4,13 +4,14 @@ var path_1 = require("path");
 var getEntries = function (options) {
     var entries = {};
     var _loop_1 = function(ext) {
-        glob_1.sync(path_1.join(options.origin, "**/*" + ext.origin), options.glob)
+        glob_1.sync(options.origin + "/**/*" + ext.origin, options.glob)
             .forEach(function (v) {
-            var filePath = path_1.resolve(v), diffPath = path_1.relative(options.origin, filePath), originBasename = path_1.basename(filePath, ext.origin), currentDirname = path_1.dirname(diffPath), fileName = originBasename + ext.target, pathName = path_1.resolve(options.target, currentDirname, fileName);
-            entries[pathName] = filePath;
+            var fileBaseName = path_1.basename(v, ext.origin), targetName = v.replace(options.target, options.origin)
+                .replace(fileBaseName + ext.target, fileBaseName + ext.origin);
+            entries[targetName] = options.publicModule ? [v].concat(options.publicModule) : [v];
         });
     };
-    for (var _i = 0, _a = options.ext; _i < _a.length; _i++) {
+    for (var _i = 0, _a = options.exts; _i < _a.length; _i++) {
         var ext = _a[_i];
         _loop_1(ext);
     }

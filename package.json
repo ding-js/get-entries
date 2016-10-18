@@ -1,18 +1,20 @@
 {
   "name": "get-entries",
   "version": "1.0.3",
-  "description": "Get webpack entries. ",
+  "description": "Get webpack entries.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "tsc -w"
   },
-  "author": "ding",
+  "author": "dingjs",
   "license": "MIT",
   "devDependencies": {
-    "@types/glob": "^5.0.30",
-    "glob": "^7.1.0",
     "typescript": "^2.0.3"
+  },
+  "dependencies": {
+    "@types/glob": "^5.0.30",
+    "glob": "^7.1.1"
   }
 }
