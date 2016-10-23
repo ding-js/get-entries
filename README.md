@@ -84,15 +84,15 @@ Now my project
 ```
 
 ## getentries([options])
-* `options` `{Object}`
+* `options`: `{Object}`
 
 
 ### options
 * `origin`: `string`
 * `target`: `string`
 * `exts`: `ext[]`
-* `publicModule`?: `string[]`
-* `glob`?: `[glob options](https://github.com/isaacs/node-glob)`
+* `publicModule?`: `string[]`
+* `glob?`: `[glob options](https://github.com/isaacs/node-glob)`
 
 
 ### ext 
