@@ -3,12 +3,11 @@ Get entries for application with multiple page
 
 
 ## Usage
+```
+npm install get-entries --save-dev
+```
 
-
-getEntries(options)
-
-
-Project
+My project
 ```
 ┌── src/
 │   ├── folder/
@@ -26,22 +25,48 @@ Project
 const webpack=require("webpack");
 const getEntries=require("get-entries");
 const entries=getEntries({
-    origin:"src/",
-    target:"dist/",
+    origin:"./src/",
+    target:"./dist/",
     exts:[
         {origin:".ts",target:".js"},
         {origin:".js",target:".js"},
         {origin:".less",target:".css"},
+    ],
+    publicModule:[
+        "jquery"
     ]
 });
+//If use publicModule,all the target will include them,you can use CommonsChunkPlugin with webpack.
+//That will return
+// [
+//     "./dist/a.js":[
+//         "./src/a.ts",
+//         "jquery
+//     ],
+//     "./dist/b.less":[
+//         "./src/b.css",
+//         "jquery
+//     ],
+//     "./dist/c.js":[
+//         "./src/c.js",
+//         "jquery
+//     ],
+//     "./dist/folder/d.js":[
+//         "./src/folder/d.ts",
+//         "jquery
+//     ]
+// ]
 
 module.exports={
-    entries:entries
+    entries:entries,
+    output:{
+        name:"[name]"
+    }
     //...
 }
 ```
 
-That will return
+Now my project
 ```
 ┌── src/
 │   ├── folder/
@@ -58,16 +83,20 @@ That will return
 └── webpack.config.json
 ```
 
-## options
-* origin: string;
-* target: string;
-* exts: ext[];
-* publicModule?: string[];
-* glob?: [glob options](https://github.com/isaacs/node-glob);
+## getentries([options])
+* `options` `{Object}`
 
 
-#### ext 
-* origin: string;
-* target: string;
+### options
+* `origin`: `string`
+* `target`: `string`
+* `exts`: `ext[]`
+* `publicModule`?: `string[]`
+* `glob`?: `[glob options](https://github.com/isaacs/node-glob)`
+
+
+### ext 
+* `origin`: `string`
+* `target`: `string`
 
 
