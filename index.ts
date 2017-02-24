@@ -16,7 +16,7 @@ export = function (entry: string, outputRoot: string, options?: IOptions) {
         ext: '.js'
     },
         entryRoot = entry.split('/*')[0] + (outputRoot.charAt(outputRoot.length - 1) === '/' ? '/' : ''),
-        entryPaths = glob.sync(entry),
+        entryPaths = glob.sync(entry, _options.glob),
         results: IResults = {};
 
     Object.assign(_options, options);
