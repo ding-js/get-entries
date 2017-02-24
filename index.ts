@@ -29,13 +29,13 @@ export = function (entry: string, outputRoot: string, options?: IOptions) {
             resultPath = entryPath.replace(entryRoot, outputRoot)
                 .replace(fileName, resultFileName);
 
-        let resultPathArray = [resultPath];
+        let entryPathArray = [entryPath];
 
         if (_options.publicModule) {
-            resultPathArray = resultPathArray.concat(_options.publicModule);
+            entryPathArray = entryPathArray.concat(_options.publicModule);
         }
 
-        results[resultPath] = [entryPath];
+        results[resultPath] = entryPathArray;
     });
 
     return results;

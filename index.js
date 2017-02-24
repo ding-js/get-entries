@@ -10,11 +10,11 @@ module.exports = function (entry, outputRoot, options) {
         var fileName = path.basename(entryPath), fileExt = path.extname(fileName);
         var resultFileName = fileName.replace(fileExt, _options.ext), resultPath = entryPath.replace(entryRoot, outputRoot)
             .replace(fileName, resultFileName);
-        var resultPathArray = [resultPath];
+        var entryPathArray = [entryPath];
         if (_options.publicModule) {
-            resultPathArray = resultPathArray.concat(_options.publicModule);
+            entryPathArray = entryPathArray.concat(_options.publicModule);
         }
-        results[resultPath] = [entryPath];
+        results[resultPath] = entryPathArray;
     });
     return results;
 };
