@@ -1,20 +1,20 @@
 "use strict";
-var glob_1 = require("glob");
-var path_1 = require("path");
-var getEntries = function (options) {
-    var entries = {};
-    var _loop_1 = function(ext) {
-        glob_1.sync(options.origin + "/**/*" + ext.origin, options.glob)
-            .forEach(function (v) {
-            var fileBaseName = path_1.basename(v, ext.origin), targetName = v.replace(options.origin, options.target)
-                .replace(fileBaseName + ext.origin, fileBaseName + ext.target);
-            entries[targetName] = options.publicModule ? [v].concat(options.publicModule) : [v];
-        });
-    };
-    for (var _i = 0, _a = options.exts; _i < _a.length; _i++) {
-        var ext = _a[_i];
-        _loop_1(ext);
-    }
-    return entries;
+var glob = require("glob");
+var path = require("path");
+module.exports = function (entry, outputRoot, options) {
+    var _options = {
+        ext: '.js'
+    }, entryRoot = entry.split('/*')[0] + (outputRoot.charAt(outputRoot.length - 1) === '/' ? '/' : ''), entryPaths = glob.sync(entry), results = {};
+    Object.assign(_options, options);
+    entryPaths.forEach(function (entryPath) {
+        var fileName = path.basename(entryPath), fileExt = path.extname(fileName);
+        var resultFileName = fileName.replace(fileExt, _options.ext), resultPath = entryPath.replace(entryRoot, outputRoot)
+            .replace(fileName, resultFileName);
+        var resultPathArray = [resultPath];
+        if (_options.publicModule) {
+            resultPathArray = resultPathArray.concat(_options.publicModule);
+        }
+        results[resultPath] = [entryPath];
+    });
+    return results;
 };
-module.exports = getEntries;

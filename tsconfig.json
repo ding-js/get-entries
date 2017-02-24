@@ -3,6 +3,11 @@
         "target": "es5",
         "typeRoots": [
             "node_modules/@types"
+        ],
+        "lib": [
+            "dom",
+            "es6",
+            "scripthost"
         ]
     },
     "exclude": [
