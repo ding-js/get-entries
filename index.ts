@@ -5,6 +5,7 @@ interface IOptions {
     ext?: string;
     glob?: glob.IOptions;
     publicModule?: string | string[];
+    dir?: boolean;
 }
 
 interface IResults {
@@ -25,14 +26,19 @@ export = function (entry: string, outputRoot: string, options?: IOptions) {
         const fileName = path.basename(entryPath),
             fileExt = path.extname(fileName);
 
-        const resultFileName = fileName.replace(fileExt, _options.ext),
-            resultPath = entryPath.replace(entryRoot, outputRoot)
-                .replace(fileName, resultFileName);
+        const resultFileName = fileName.replace(fileExt, _options.ext);
+
+        let resultPath = entryPath.replace(entryRoot, outputRoot)
+            .replace(fileName, resultFileName);
 
         let entryPathArray = [entryPath];
 
         if (_options.publicModule) {
             entryPathArray = entryPathArray.concat(_options.publicModule);
+        }
+
+        if (options.dir) {
+            resultPath = resultPath.split('/').slice(0, -1).join('/');
         }
 
         results[resultPath] = entryPathArray;
