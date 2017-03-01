@@ -11,11 +11,11 @@ interface IResults {
     [key: string]: string[];
 }
 
-export = function (entry: string, outputRoot: string, options?: IOptions) {
+export = function (entry: string, options?: IOptions) {
     const _options: IOptions = {
         ext: '.js'
     },
-        entryRoot = entry.split('/*')[0] + (outputRoot.charAt(outputRoot.length - 1) === '/' ? '/' : ''),
+        entryRoot = entry.split('/*')[0],
         entryPaths = glob.sync(entry, _options.glob),
         results: IResults = {};
 
@@ -26,7 +26,7 @@ export = function (entry: string, outputRoot: string, options?: IOptions) {
             fileExt = path.extname(fileName);
 
         const resultFileName = fileName.replace(fileExt, _options.ext),
-            resultPath = entryPath.replace(entryRoot, outputRoot)
+            resultPath = entryPath.replace(entryRoot + '/', '')
                 .replace(fileName, resultFileName);
 
         let entryPathArray = [entryPath];
