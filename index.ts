@@ -5,6 +5,7 @@ interface IOptions {
     ext?: string;
     glob?: glob.IOptions;
     publicModule?: string | string[];
+    dir?: boolean;
 }
 
 interface IResults {
@@ -13,7 +14,8 @@ interface IResults {
 
 export = function (entry: string, options?: IOptions) {
     const _options: IOptions = {
-        ext: '.js'
+        ext: '.js',
+        dir: false
     },
         entryRoot = entry.split('/*')[0],
         entryPaths = glob.sync(entry, _options.glob),
@@ -25,14 +27,21 @@ export = function (entry: string, options?: IOptions) {
         const fileName = path.basename(entryPath),
             fileExt = path.extname(fileName);
 
-        const resultFileName = fileName.replace(fileExt, _options.ext),
-            resultPath = entryPath.replace(entryRoot + '/', '')
-                .replace(fileName, resultFileName);
+
+        const resultFileName = fileName.replace(fileExt, _options.ext);
+
+        let resultPath = entryPath.replace(entryRoot + '/', '')
+            .replace(fileName, resultFileName);
+
 
         let entryPathArray = [entryPath];
 
         if (_options.publicModule) {
             entryPathArray = entryPathArray.concat(_options.publicModule);
+        }
+
+        if (options.dir) {
+            resultPath = resultPath.split('/').slice(0, -1).join('/');
         }
 
         results[resultPath] = entryPathArray;

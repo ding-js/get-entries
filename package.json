@@ -9,10 +9,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "prod": "tsc",
     "dev": "tsc -w"
   },
-  "author": "dingjs",
+  "author": "Ding",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^2.0.3",
