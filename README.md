@@ -46,17 +46,17 @@ const entries=getEntries('./src/**/*.ts','./dist',{
 module.exports={
     entries:entries,
     output:{
-        name:'[name]'   // name must be '[name]'
+        name:'[name]'
     }
     //...
 }
 ```
 
-## getentries(glob,outputDir,[options])
+## getentries(glob,[options])
 * `glob` `{String}`  Files to be matched
-* `outputDir` `{String}`
 * `options` `{Object}`
     * `ext` `String` ext of output files 
     * `publicModule?` `String[]`
     * `glob` `{Object}` [glob options](https://github.com/isaacs/node-glob)
+    * `dir` `{Boolean}` use dir not whole path as property's name
 
