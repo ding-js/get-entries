@@ -3,7 +3,8 @@ var glob = require("glob");
 var path = require("path");
 module.exports = function (entry, options) {
     var _options = {
-        ext: '.js'
+        ext: '.js',
+        dir: false
     }, entryRoot = entry.split('/*')[0], entryPaths = glob.sync(entry, _options.glob), results = {};
     Object.assign(_options, options);
     entryPaths.forEach(function (entryPath) {
@@ -13,7 +14,8 @@ module.exports = function (entry, options) {
             .replace(fileName, resultFileName);
         var entryPathArray = [entryPath];
         if (_options.publicModule) {
-            entryPathArray = entryPathArray.concat(_options.publicModule);
+            var p = Array.isArray(_options.publicModule) ? _options.publicModule : [_options.publicModule];
+            entryPathArray = p.concat(entryPathArray);
         }
         if (options.dir) {
             resultPath = resultPath.split('/').slice(0, -1).join('/');

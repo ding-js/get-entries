@@ -52,7 +52,7 @@ module.exports={
 }
 ```
 
-## getentries(glob,[options])
+## getEntries(glob,[options])
 * `glob` `{String}`  Files to be matched
 * `options` `{Object}`
     * `ext` `String` ext of output files 

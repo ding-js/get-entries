@@ -37,7 +37,8 @@ export = function (entry: string, options?: IOptions) {
         let entryPathArray = [entryPath];
 
         if (_options.publicModule) {
-            entryPathArray = entryPathArray.concat(_options.publicModule);
+            const p = Array.isArray(_options.publicModule) ? _options.publicModule : [_options.publicModule];
+            entryPathArray = p.concat(entryPathArray);
         }
 
         if (options.dir) {
