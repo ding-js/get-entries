@@ -1,62 +1,58 @@
 ## Usage
+
 ```
 npm i -D get-entries
 ```
 
-My project
 ```
 ┌── src/
 │   ├── folder/
-│   │   └── c.ts
-│   ├── a.ts
-│   └── b.ts
+│   │   └── c.js
+│   ├── a.js
+│   └── b.js
 ├── dist/
 └── webpack.config.json
 ```
 
-
 ```javascript
 //webpack.config.js
-const webpack=require('webpack');
-const getEntries=require('get-entries');
+const getEntries = require('get-entries');
 
-const entries=getEntries('./src/**/*.ts','./dist',{
-    publicModule:[
-        'jquery'
-    ]
+const entries = getEntries('./src/**/*.js', './src/', {
+  commonModules: ['jquery']
 });
 
-//If 'publicModule' was defined,all the files will include the 'publicModule',you can use CommonsChunkPlugin with webpack.
+//If 'commonModules' was defined,all the files will include the 'commonModules',you can use CommonsChunkPlugin with webpack.
 //That will return
 // [
-//     './dist/a.js':[
-//         './src/a.ts',
-//         'jquery
+//     'a':[
+//         'jquery,
+//         './src/a.js'
 //     ],
-//     './dist/b.js':[
-//         './src/b.js',
-//         'jquery
+//     'b':[
+//         'jquery,
+//         './src/b.js'
 //     ],
-//     './dist/folder/c.js':[
-//         './src/folder/c.ts',
-//         'jquery
+//     'folder/c':[
+//         'jquery,
+//         './src/folder/c.js'
 //     ]
 // ]
 
-module.exports={
-    entries:entries,
-    output:{
-        name:'[name]'
-    }
-    //...
-}
+module.exports = {
+  entries: entries,
+  output: {
+    name: '[name]'
+  }
+  //...
+};
 ```
 
-## getEntries(glob,[options])
-* `glob` `{String}`  Files to be matched
-* `options` `{Object}`
-    * `ext` `String` ext of output files 
-    * `publicModule?` `String[]`
-    * `glob` `{Object}` [glob options](https://github.com/isaacs/node-glob)
-    * `dir` `{Boolean}` use dir not whole path as property's name
+## getEntries(pattern, baseDir:string, [options])
 
+* pattern {string} glob path string
+* baseDir {string} path you want to remove in entries' key
+* options
+  * glob? {Object}
+  * commonModules? {Array<string> | string}
+  * useDir? {boolean}

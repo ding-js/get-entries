@@ -1,16 +1,16 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "dom",
-            "es6",
-            "scripthost"
-        ]
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "declaration": true,
+        "declarationDir": "./dist",
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "module": "commonjs"
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "./dist"
     ]
 }

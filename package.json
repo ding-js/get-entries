@@ -1,24 +1,29 @@
 {
   "name": "get-entries",
-  "version": "3.0.2",
-  "description": "Get entries for application with multiple page",
+  "version": "4.0.0",
+  "description": "Get webpack entry object for multiple page application",
   "repository": {
     "type": "git",
     "url": "https://github.com/ding-js/get-entries.git"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": ["dist", "src"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "tsc",
+    "test": "jest test/index.js",
+    "build": "tsc",
     "dev": "tsc -w"
   },
   "author": "Ding",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^22.0.6",
     "typescript": "^2.0.3",
-    "@types/glob": "^5.0.30"
+    "fs-extra": "^5.0.0"
   },
   "dependencies": {
-    "glob": "^7.1.1"
-  }
+    "@types/glob": "^5.0.34",
+    "glob": "^7.1.1",
+    "tslib": "^1.8.1"
+  },
+  "types": "dist/index.d.ts"
 }
