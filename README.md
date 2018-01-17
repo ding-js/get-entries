@@ -24,7 +24,7 @@ const entries = getEntries('./src/**/*.js', './src/', {
 
 //If 'commonModules' was defined,all the files will include the 'commonModules',you can use CommonsChunkPlugin with webpack.
 //That will return
-// [
+// {
 //     'a':[
 //         'jquery,
 //         './src/a.js'
@@ -37,7 +37,7 @@ const entries = getEntries('./src/**/*.js', './src/', {
 //         'jquery,
 //         './src/folder/c.js'
 //     ]
-// ]
+// }
 
 module.exports = {
   entries: entries,
