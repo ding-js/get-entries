@@ -1,6 +1,6 @@
 {
   "name": "get-entries",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Get webpack entry object for multiple page application",
   "repository": {
     "type": "git",

@@ -42,7 +42,8 @@ const entries = getEntries('./src/**/*.js', './src/', {
 module.exports = {
   entries: entries,
   output: {
-    name: '[name]'
+    name: '[name].js',
+    path: path.resolve(__dirname, 'dist')
   }
   //...
 };

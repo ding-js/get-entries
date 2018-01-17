@@ -32,7 +32,7 @@ module.exports = (pattern: string, baseDir?: string, option?: Option) => {
 
       const fileExt = path.extname(fileName);
 
-      const pathFromBase = baseDir ? path.relative(baseDir, file) : file;
+      const pathFromBase = baseDir ? path.relative(baseDir, file) : file.slice(2); // remove ./
 
       const modules = op.commonModules ? [].concat(op.commonModules, file) : [file];
 

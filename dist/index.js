@@ -15,7 +15,7 @@ module.exports = function (pattern, baseDir, option) {
         glob.sync(pattern, op.glob).forEach(function (file) {
             var fileName = path.basename(file);
             var fileExt = path.extname(fileName);
-            var pathFromBase = baseDir ? path.relative(baseDir, file) : file;
+            var pathFromBase = baseDir ? path.relative(baseDir, file) : file.slice(2); // remove ./
             var modules = op.commonModules ? [].concat(op.commonModules, file) : [file];
             var moduleName = op.useDir ? path.join(pathFromBase, '..') : pathFromBase.slice(0, -fileExt.length);
             moduleName = moduleName.replace(/\\/g, '/');
