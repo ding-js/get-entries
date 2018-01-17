@@ -9,6 +9,7 @@
   "main": "dist/index.js",
   "files": ["dist", "src"],
   "scripts": {
+    "pretest": "npm run build",
     "test": "jest test/index.js",
     "build": "tsc",
     "dev": "tsc -w"

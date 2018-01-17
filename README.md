@@ -49,7 +49,7 @@ module.exports = {
 };
 ```
 
-## getEntries(pattern, baseDir:string, [options])
+## getEntries(pattern, baseDir, [options])
 
 * pattern {string} glob path string
 * baseDir {string} path you want to remove in entries' key
